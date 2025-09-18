@@ -1,4 +1,4 @@
-# DataExpertIO-stock-market
+# Building a REST API Extractor with Python
 This project is part of the [DataExpert.io](https://learn.dataexpert.io/) Data Engineering bootcamp.
 
 ## Get stock data from [Poligon.io](https://polygon.io/) API
