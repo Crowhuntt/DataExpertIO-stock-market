@@ -1,6 +1,7 @@
 import time
 import requests
 import os
+import csv
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -38,3 +39,13 @@ print(len(tickers))
 
 # Set ticker schema to output to CSV file
 ticker_schema = ['ticker', 'name', 'market', 'locale', 'primary_exchange', 'type', 'active', 'currency_name', 'cik', 'composite_figi', 'share_class_figi', 'last_updated_utc']
+
+# Export tickers to CSV
+with open('tickers.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    writer = csv.DictWriter(csvfile, fieldnames=ticker_schema)
+    writer.writeheader()
+    for ticker in tickers:
+        # Only write fields present in schema
+        row = {key: ticker.get(key, '') for key in ticker_schema}
+        writer.writerow(row)
+
